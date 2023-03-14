@@ -1,0 +1,132 @@
+2023-03-14 11:27:21,000 DEBUG Starting new HTTPS connection (1): en.wikipedia.org:443
+2023-03-14 11:27:23,148 DEBUG https://en.wikipedia.org:443 "GET /w/api.php HTTP/1.1" 200 None
+2023-03-14 11:27:23,188 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-03-14 11:27:23,189 INFO [33mPress CTRL+C to quit[0m
+2023-03-14 11:27:23,192 INFO  * Restarting with stat
+2023-03-14 11:27:28,741 DEBUG Starting new HTTPS connection (1): en.wikipedia.org:443
+2023-03-14 11:27:30,424 DEBUG https://en.wikipedia.org:443 "GET /w/api.php HTTP/1.1" 200 None
+2023-03-14 11:27:30,473 WARNING  * Debugger is active!
+2023-03-14 11:27:30,626 INFO  * Debugger PIN: 220-726-321
+2023-03-14 11:27:48,711 INFO No data in query, wiki.html has loaded
+2023-03-14 11:27:48,743 INFO 127.0.0.1 - - [14/Mar/2023 11:27:48] "GET / HTTP/1.1" 200 -
+2023-03-14 11:28:13,783 DEBUG Starting new HTTPS connection (1): en.wikipedia.org:443
+2023-03-14 11:28:14,253 ERROR issues loading the data HTTPSConnectionPool(host='en.wikipedia.org', port=443): Max retries exceeded with url: /w/api.php?action=query&format=json&list=search&srsearch=mom (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')))
+Traceback (most recent call last):
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 419, in connect
+    self.sock = ssl_wrap_socket(
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\ssl_.py", line 449, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\ssl_.py", line 493, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 513, in wrap_socket
+    return self.sslsocket_class._create(
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1071, in _create
+    self.do_handshake()
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1342, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 489, in send
+    resp = conn.urlopen(
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='en.wikipedia.org', port=443): Max retries exceeded with url: /w/api.php?action=query&format=json&list=search&srsearch=mom (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\E1002312\OneDrive - Sanlam Life Insurance Limited\Desktop\SM Khama\Python-Flask\app.py", line 25, in home
+    data = requests.get(URL,params={'action': 'query', 'format': 'json', 'list': 'search', 'srsearch': request.args.get('q')})
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 563, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='en.wikipedia.org', port=443): Max retries exceeded with url: /w/api.php?action=query&format=json&list=search&srsearch=mom (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')))
+2023-03-14 11:28:14,268 INFO 127.0.0.1 - - [14/Mar/2023 11:28:14] "[35m[1mGET /?q=mom HTTP/1.1[0m" 500 -
+2023-03-14 11:28:14,374 INFO 127.0.0.1 - - [14/Mar/2023 11:28:14] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2023-03-14 11:28:14,376 INFO 127.0.0.1 - - [14/Mar/2023 11:28:14] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2023-03-14 11:28:14,413 INFO 127.0.0.1 - - [14/Mar/2023 11:28:14] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2023-03-14 12:01:43,471 DEBUG Starting new HTTPS connection (1): en.wikipedia.org:443
+2023-03-14 12:01:45,164 DEBUG https://en.wikipedia.org:443 "GET /w/api.php HTTP/1.1" 200 None
+2023-03-14 12:01:45,201 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-03-14 12:01:45,202 INFO [33mPress CTRL+C to quit[0m
+2023-03-14 12:01:45,205 INFO  * Restarting with stat
+2023-03-14 12:01:47,163 DEBUG Starting new HTTPS connection (1): en.wikipedia.org:443
+2023-03-14 12:01:48,873 DEBUG https://en.wikipedia.org:443 "GET /w/api.php HTTP/1.1" 200 None
+2023-03-14 12:01:48,907 WARNING  * Debugger is active!
+2023-03-14 12:01:48,917 INFO  * Debugger PIN: 220-726-321
+2023-03-14 12:02:49,657 INFO No data in query, wiki.html has loaded
+2023-03-14 12:02:49,683 INFO 127.0.0.1 - - [14/Mar/2023 12:02:49] "GET / HTTP/1.1" 200 -
+2023-03-14 12:02:56,217 DEBUG Starting new HTTPS connection (1): en.wikipedia.org:443
+2023-03-14 12:02:57,118 ERROR issues loading the data HTTPSConnectionPool(host='en.wikipedia.org', port=443): Max retries exceeded with url: /w/api.php?action=query&format=json&list=search&srsearch=goog (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')))
+Traceback (most recent call last):
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 419, in connect
+    self.sock = ssl_wrap_socket(
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\ssl_.py", line 449, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\ssl_.py", line 493, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 513, in wrap_socket
+    return self.sslsocket_class._create(
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1071, in _create
+    self.do_handshake()
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1342, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 489, in send
+    resp = conn.urlopen(
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='en.wikipedia.org', port=443): Max retries exceeded with url: /w/api.php?action=query&format=json&list=search&srsearch=goog (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\E1002312\OneDrive - Sanlam Life Insurance Limited\Desktop\SM Khama\Python-Flask\app.py", line 25, in home
+    data = requests.get(URL,params={'action': 'query', 'format': 'json', 'list': 'search', 'srsearch': request.args.get('q')})
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\E1002312\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 563, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='en.wikipedia.org', port=443): Max retries exceeded with url: /w/api.php?action=query&format=json&list=search&srsearch=goog (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')))
+2023-03-14 12:02:57,181 INFO 127.0.0.1 - - [14/Mar/2023 12:02:57] "[35m[1mGET /?q=goog HTTP/1.1[0m" 500 -
+2023-03-14 12:02:57,314 INFO 127.0.0.1 - - [14/Mar/2023 12:02:57] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2023-03-14 12:02:57,317 INFO 127.0.0.1 - - [14/Mar/2023 12:02:57] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2023-03-14 12:02:57,372 INFO 127.0.0.1 - - [14/Mar/2023 12:02:57] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
